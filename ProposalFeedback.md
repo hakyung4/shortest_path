@@ -7,7 +7,7 @@ Must re-submit!
 
 ### Comments
 
-The proposal is well-written, but unfortunately there is one major problem and some minor problems in your algorithms. Also, I do like the clean pdf format, but it is supposed to be in .md file.
+The proposal is well-written, but unfortunately there is one major problem and some minor problems in your algorithms. Also, I do like the clean pdf format, but the proposal is supposed to be in .md file.
 
 
 **Dataset**
