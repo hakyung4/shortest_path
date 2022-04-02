@@ -49,7 +49,7 @@ Our ﬁnal deliverable goals are as follows:
   - A function/ set of functions that color the shortest path
   - A table and graph that highlights the time it took for each function to land at the shortest path
   - Unique data structures representing the graph and its elements (edges,nodes,etc.)
-  - 
+
  Planning ahead, we divided our investigation into several major milestones, setting a proposed timeline for each task.
   - Data acquisition, processing and visualization (April 3, 2022)
   - Establish project directory, foundation, and major ﬁles
@@ -59,4 +59,3 @@ Our ﬁnal deliverable goals are as follows:
   - Finish 1st Shortest Path Algorithm (BFS or Dijkstra’s) (April 24, 2022)
   - Finish 2nd Shortest Path Algorithm (May 3, 2022)
   - Finish Presentation + Report (May 6, 2022)
-
