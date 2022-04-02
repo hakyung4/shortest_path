@@ -4,7 +4,8 @@
 ### To do:
 - Create basic file structure
 - Create github branches and structure
-- Add dataset and configure file type
+- Add/process dataset and configure file type
+- Implement data storag 
 - Implement initial visualisation of our dataset (print function)
 - Update proposal
     - New dataset: https://www.cs.utah.edu/~lifeifei/SpatialDataset.htm
