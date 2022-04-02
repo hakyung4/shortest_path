@@ -22,7 +22,7 @@ As for algorithms, our decision to use breadth-ﬁrst search and Dijkstra’s al
 
 ## Implementation Plan
 
-We plan to use breadth-first search and Dijkstra’s algorithm as means to find the diameter (shortest path) between two nodes, then use a force directed graph drawing to represent our road network.
+We plan to use breadth-first search and Dijkstra’s algorithm as means to find the diameter (shortest path) between two nodes, then use a force directed graph drawing to represent our road network. All the algorithms will be implemented in C++, and the software that will be used to show the force directed graph will be v Python Jupyter Notebook.
 
 Highlighted below are more details for each algorithm:
   - Breadth First Search (covered in class)
