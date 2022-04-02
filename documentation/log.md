@@ -2,12 +2,12 @@
 
 ## Week 1:
 ### To do:
-- Create basic file structure
-- Create github branches and structure
-- Add/process dataset and configure file type
-- Implement data storag 
+✓ Create basic file structure
+✓ Create github branches and structure
+✓ Add/process dataset and configure file type
+- Implement data storage
 - Implement initial visualisation of our dataset (print function)
-- Update proposal
+✓ Update proposal
     - New dataset: https://www.cs.utah.edu/~lifeifei/SpatialDataset.htm
     - Assign dataset weights (done: assign them to the distance between nodes)
     - Outputs: 
