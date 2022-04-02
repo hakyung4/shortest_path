@@ -14,13 +14,14 @@ As for algorithms, our decision to use breadth-ﬁrst search and Dijkstra’s al
 
 ## Dataset acquisition and Processing
 
-- Data format: We acquired the dataset from [Real Datasets for Spatial Databases: Road Networks and Points of Interest](https://www.cs.utah.edu/~lifeifei/SpatialDataset.htm). We decided to use the first two given datasets because they have all the essential information we need such as real distance between two nodes. The datasets represent a road network in California. The input format of the datasets is in .txt. We plan to use all of the given data.
+- Data format: We acquired the dataset from [Real Datasets for Spatial Databases: Road Networks and Points of Interest](https://www.cs.utah.edu/~lifeifei/SpatialDataset.htm). We decided to use the first two given datasets because they have all the essential information we need such as real distance between two nodes. The dataset represents a road network in California. The above data set includes both nodes and edges. Nodes represent road intersections or endpoints, and each node is assigned a unique ID as well as the corresponding longitude and latitude coordinates. Each edge consists of an edge ID, the starting and ending node IDs, as well as the distance between these two nodes (distance calculated from the longitude and latitude coordinates) which we’ll be using as assigned weights for each edge. The input format of the dataset is in .txt. The dataset includes 21,048 nodes and 21,693 edges. We plan to use all of the given data.
 
-- Data correction: 
+- Data correction: The data provided includes all the needed information to effectively reach an answer for our leading question. However, for safety measures, a correction step we will take is making sure each row has two non-empty columns, and each of the two columns have the correct data type (integers) to avoid issues with empty/missing data-points, skipping to the next row if such an instance occurs.
 
-- Data Storage: 
+- Data Storage: The dataset will be stored in a graph. Since each node (intersection) has a varying number of edges (roads connecting to other intersections), we will need to define a graph implementation to suit our investigation. There will be unique data types that are created to represent the various elements of the graph such as edges and nodes. The struct for nodes will contain the node ID and the number of edges. The struct for edges will contain a pointer to a previous node and the next node. The space complexity for this graph will be O(V+E) where V is the number of vertices and E is the number of edges.
 
 ## Implementation Plan
+
 We plan to use force directed graph drawing to represent our data, then use breadth-ﬁrst search and Dijkstra’s algorithm as means to ﬁnd the diameter (shortest path) between two nodes.
 
 Highlighted below are more details for each algorithm:
@@ -28,13 +29,13 @@ Highlighted below are more details for each algorithm:
     - Input: nodes and edges given in the .txt ﬁle
     - Output shown: using Force directed graph drawing
     - By using force directed graph drawing, it would show the path from the start to the destination.
-    - Function eﬃciency: Targets on O(V + E); V = vertices(nodes) on graph, E = edges on graph
+    - [Function eﬃciency](https://en.wikipedia.org/wiki/Force-directed_graph_drawing): Targets on O(V + E); V = vertices(nodes) on graph, E = edges on graph
 
   - Dijkstra’s Algorithm (covered in class)
     - Input: nodes and edges given in the .txt ﬁle
     - Output shown: using Force directed graph drawing
     - By using force directed graph drawing, it would show the path from the start to the destination.
-    - Function eﬃciency: Targets on O(V^2); V = vertices(nodes) on graph
+    - [Function eﬃciency](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm): Targets on O(V^2); V = vertices(nodes) on graph
 
   - Force directed graph drawing (not covered in class)
     - Input: ﬁle containing relevant data (may need to be modiﬁed to diﬀerent ﬁle type, possibly a csv)
@@ -42,6 +43,7 @@ Highlighted below are more details for each algorithm:
     - Function eﬃciency: Targets on O(n^3); n = number of nodes on graph
 
 ## Timeline
+
 Our ﬁnal deliverable goals are as follows:
   - A visualization of our dataset represented as graph of all the nodes and edges
   - A set of functions that ﬁnd the shortest path using BFS
@@ -51,7 +53,8 @@ Our ﬁnal deliverable goals are as follows:
   - Unique data structures representing the graph and its elements (edges,nodes,etc.)
 
  Planning ahead, we divided our investigation into several major milestones, setting a proposed timeline for each task.
-  - Data acquisition, processing and visualization (April 3, 2022)
+  - Update Final Project Proposal (April 3, 2022)
+  - Data acquisition and processing (April 3, 2022)
   - Establish project directory, foundation, and major ﬁles
   - Access dataset successfully
   - Come up with methods to store and visualize data
