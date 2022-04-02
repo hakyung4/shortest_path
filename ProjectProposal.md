@@ -6,11 +6,11 @@
 
 Throughout the past few decades, the rise in use of vehicles has become indispensable in major cities,resulting in the expansion of roads networks and routes. This resulted in the increasing complexity and diﬃculty ofdeciding on the best route to take whilst minimizing time. This problem is relevant within two instances: the mostcommon scenario of a human deciding on the fastest route to take between two points on the map, but morerecently applicable to autonomous vehicles.
 
-A question then arises: given an undirected dataset of a speciﬁc area’s road network and assumingideal conditions (no traﬃc, obstacles, limitations, and uniform speed all throughout), what would be the bestalgorithm (from among breadth-ﬁrst search and Dijkstra’s algorithm) to deduce the fastest route between twopoints (road intersection) on a map?
+A question then arises: given a dataset of a speciﬁc area’s road network and assumingideal conditions (no traﬃc, obstacles, limitations, and uniform speed all throughout), what would be the bestalgorithm (from among breadth-ﬁrst search and Dijkstra’s algorithm) to deduce the fastest route between twopoints (road intersection) on a map?
 
-To further explore this question and land at an accurate answer/solution to the above problem, we havedecided to use the California Road Network[1] as our dataset as it provides an undirected network with nodesrepresenting road intersections and edges representing roads connecting these intersections. The datasetprovides this data as a set of two columns that depict the nodes that have an edge between them. This would bea great dataset to base our investigation on as it provides a real-world location that embodies the problem we’readdressing with regards to complexity of routes and traﬃc, but it also stands as an exciting challenge as itrequires our team to solve the challenging problems of suitably processing, storing, visualizing such a dataset in asuitable way to implement our algorithms and answer our leading question.
+To further explore this question and land at an accurate answer/solution to the above problem, we havedecided to use the [California Road Network](https://www.cs.utah.edu/~lifeifei/SpatialDataset.htm) as our dataset as it provides an undirected network with nodesrepresenting road intersections and edges representing roads connecting these intersections. The datasetprovides this data as a set of two columns that depict the nodes that have an edge between them. This would bea great dataset to base our investigation on as it provides a real-world location that embodies the problem we’readdressing with regards to complexity of routes and traﬃc, but it also stands as an exciting challenge as itrequires our team to solve the challenging problems of suitably processing, storing, visualizing such a dataset in asuitable way to implement our algorithms and answer our leading question.
 
-As for algorithms, our decision to use breadth-ﬁrst search and Dijkstra’s algorithm to attempt to answer ourleading question as well as force-directed graphs to allow us to represent our data stems from our knowledgefrom previous units as well as our research on the topic as these algorithms have been hypothesized to beeﬀective in ﬁnding the shortest path between two nodes of an undirected graph, thus proving relevant to ourleading question. After ﬁrst processing and storing our data in a suitable manner, we will use these algorithmsalongside a counter for how many nodes have been traversed to ﬁnd the diameter (shortest path) between two nodes as well as a way to track the elapsed time (an std module), comparing the time it took for eachalgorithm to land at the answer.
+As for algorithms, our decision to use breadth-ﬁrst search and Dijkstra’s algorithm to attempt to answer ourleading question as well as force-directed graphs to allow us to represent our data stems from our knowledgefrom previous units as well as our research on the topic as these algorithms have been hypothesized to beeﬀective in ﬁnding the shortest path between two nodes of an undirected graph, thus proving relevant to ourleading question. After ﬁrst processing and storing our data in a suitable manner, we will use these algorithmsalongside a counter for how many nodes have been traversed to ﬁnd the diameter (shortest path) between two nodes, calculate the total distance of the path using the provided edge weights, as well as a way to track the elapsed time (an std module), comparing the time it took for eachalgorithm to land at the answer.
 
 ## Dataset acquisition and Processing
 
@@ -22,7 +22,7 @@ As for algorithms, our decision to use breadth-ﬁrst search and Dijkstra’s al
 
 ## Implementation Plan
 
-We plan to use force directed graph drawing to represent our data, then use breadth-ﬁrst search and Dijkstra’s algorithm as means to ﬁnd the diameter (shortest path) between two nodes.
+We plan to use breadth-first search and Dijkstra’s algorithm as means to find the diameter (shortest path) between two nodes, then use a force directed graph drawing to represent our road network.
 
 Highlighted below are more details for each algorithm:
   - Breadth First Search (covered in class)
@@ -54,11 +54,12 @@ Our ﬁnal deliverable goals are as follows:
 
  Planning ahead, we divided our investigation into several major milestones, setting a proposed timeline for each task.
   - Update Final Project Proposal (April 3, 2022)
-  - Data acquisition and processing (April 3, 2022)
-  - Establish project directory, foundation, and major ﬁles
-  - Access dataset successfully
-  - Come up with methods to store and visualize data
-  - Finish Force-Directed Graph that represents all the data (April 10, 2022)
-  - Finish 1st Shortest Path Algorithm (BFS or Dijkstra’s) (April 24, 2022)
-  - Finish 2nd Shortest Path Algorithm (May 3, 2022)
+  - Data acquisition and processing (April 10, 2022)
+    - Establish project directory, foundation, and major ﬁles
+    - Access dataset successfully
+    - Implement data storage
+    - Initial visualization of data 
+  - Finish 1st Shortest Path Algorithm (BFS or Dijkstra’s) (April 10, 2022)
+  - Finish 2nd Shortest Path Algorithm (April 24, 2022)
+  - Finish Force-Directed Graph that represents all the data (May 3, 2022)
   - Finish Presentation + Report (May 6, 2022)
