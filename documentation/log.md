@@ -36,23 +36,30 @@
 ### Contribution
 
 1. Ahmed(anahas2):
-    -
+    - Updated proposal.
+    - Added/processed dataset and configure file type.
 
 2. Peter (hakyung4): 
     - Created github branches and structure.
     - Created basic file structure.
+    - Added/processed dataset and configure file type.
 
 3. Kevin (sangwoo2):
-    - 
+    - Updated proposal.
+    - Added/processed dataset and configure file type.
 
 4. Akhil (analla6):
-    -
+    - Updated proposal.
+    - Added/processed dataset and configure file type.
 
 ### Obstacles
-
+We had a delay in our progress because we had to update our proposal with given feedback from our mentor. Since everyone was busy on weekdays, we met up on April 2nd, Saturday, to discuss more about our project. However, updating proposal and solving issues that we previously had were not too hard to solve with an excellent dataset. Overall, updating our proposal delayed our progress, but we were still able to make some progress.
 
 ### Plan for this week
 - Begin working on storing dataset either into adjacency matrix or list
+
 - Begin working on BFS implementation to the project
+
 - Completion of importing data into Visual Studio 
+
 - Complete working on creating file structure
