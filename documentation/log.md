@@ -52,4 +52,7 @@
 
 
 ### Plan for this week
-
+- Begin working on storing dataset either into adjacency matrix or list
+- Begin working on BFS implementation to the project
+- Completion of importing data into Visual Studio 
+- Complete working on creating file structure
