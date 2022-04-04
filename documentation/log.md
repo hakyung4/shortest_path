@@ -56,17 +56,9 @@
 We had a delay in our progress because we had to update our proposal with given feedback from our mentor. Since everyone was busy on weekdays, we met up on April 2nd, Saturday, to discuss more about our project. However, updating proposal and solving issues that we previously had were not too hard to solve with an excellent dataset. Overall, updating our proposal delayed our progress, but we were still able to make some progress.
 
 ### Plan for this week
-<<<<<<< HEAD
-- Convert .txt file to .csv file to access it with a better runtime
-
-- Discuss which data structure we are going to use and implement data storage
-
-- Construct a graph
-
-- Initial visualization of data
-=======
 - Begin working on storing dataset either into adjacency matrix or list
 - Begin working on BFS implementation to the project
+
 - Completion of importing data into Visual Studio 
+
 - Complete working on creating file structure
->>>>>>> origin
