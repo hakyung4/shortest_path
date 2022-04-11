@@ -19,7 +19,7 @@
         b) a force directed graph representing the navigation route
     - Platform used for force directed graph: python
     - Meeting times:
-      - Friday:   5-7pm
+      - Friday: 5-7pm
       - Saturday: 2-4pm
 
 ## Week 2 (04/03 - 04/09)
@@ -63,3 +63,28 @@ We had a delay in our progress because we had to update our proposal with given 
 - Completion of importing data into Visual Studio 
 
 - Complete working on creating file structure
+
+## Week 3 (04/10 - 04/16)
+### What we accomplished
+
+- We could not accomplish anything because of quizzes and tests everyone had this week. 
+
+### Contribution
+
+1. Ahmed(anahas2):
+
+2. Peter (hakyung4): 
+
+3. Kevin (sangwoo2):
+
+4. Akhil (analla6):
+
+### Obstacles
+We were planning on meeting up on our regular meeting times, but we could not make either of them because everyone had quizzes and tests this week, which made impossible to find the time that worked for everyone. Also, some team members had interviews for their internships, and everyone agreed that preparing interview is more important as of now because we can make more progress on the following week.
+
+### Plan for this week
+- Finish on storing dataset either into adjacency matrix or list
+
+- Finish on BFS implementation to the project
+
+- Finish working on creating file structure
