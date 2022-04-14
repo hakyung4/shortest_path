@@ -72,6 +72,9 @@
     "numeric": "cpp",
     "random": "cpp",
     "regex": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "compare": "cpp",
+    "concepts": "cpp",
+    "variant": "cpp"
   }
 }
