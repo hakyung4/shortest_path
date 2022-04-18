@@ -88,3 +88,38 @@ We were planning on meeting up on our regular meeting times, but we could not ma
 - Finish on BFS implementation to the project
 
 - Finish working on creating file structure
+
+## Week 4 (04/17 - 04/23)
+### What we accomplished
+
+- We successfully stored our dataset in adjacency list.
+
+- We implemented BFS.
+
+### Contribution
+
+1. Ahmed(anahas2): 
+    - Implemented BFS.
+    - Implemented Data storage.
+
+2. Peter (hakyung4):
+    - Implemented BFS.
+    - Implemented Data storage.
+
+3. Kevin (sangwoo2):
+    - Implemented BFS.
+    - Implemented Data storage.
+
+4. Akhil (analla6): 
+    - Implemented BFS.
+    - Implemented Data storage.
+
+### Obstacles
+Although we were able to succesfully store the dataset and implemented BFS, we are not sure if they are correct or not. We could not come up with ways to verify our implementations.
+
+### Plan for this week
+- Verify our implementations for BFS and data storage.
+
+- Move implementations to separate file such as Graph.h and Graph.cpp, and construct a class.
+
+- Implement Dijkstra’s Algorithm.
