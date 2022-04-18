@@ -1,3 +1,4 @@
+// When compiling, as of now, do g++ -std=c++11 main.cpp -o test(you can replace test with whatever you want to call this program) to avoid c++ version conflict
 #include <algorithm>
 #include <fstream>
 #include <iomanip>
@@ -9,17 +10,29 @@
 void addEdge(std::vector<int> adj[], std::string inputFile) {
   std::ifstream File(inputFile);
   std::string line;
-  while(std::getline(File, line)) {
+  while (std::getline(File, line)) {
     int node1;
     int node2;
-    
+
     std::stringstream ss(line);
     ss >> node1;
     ss >> node2;
 
-    std::cout << "Start node: " << node1 << " " << std::endl;
-    std::cout << "End node: " << node2 << " " << std::endl;
-    std::cout << "\n";
+    // add to matrix
+    adj[node1].push_back(node2);
+    adj[node2].push_back(node1);
+  }
+}
+
+// A utility function to print the adjacency list
+// representation of graph
+void printGraph(std::vector<int> adj[], int V) {
+  for (int v = 0; v < V; ++v) {
+    std::cout << "\nAdjacency list of vertex " << v
+              << "\nhead";
+    for (auto x : adj[v])
+      std::cout << " -> " << x;
+    printf("\n");
   }
 }
 
@@ -27,13 +40,14 @@ int main() {
   int line_count = 0;
   std::ifstream File("dataset/cal.cedge.txt");
   std::string line;
-  while(std::getline(File, line)) {
+  while (std::getline(File, line)) {
     line_count++;
   }
 
-  std::vector<int> adj[line_count];
-  addEdge(adj, "dataset/cal.cedge.txt");
+  std::vector<int> adjMat[21693];  // error when I use line_count fsr
+  addEdge(adjMat, "dataset/cal.cedge.txt");
 
+  printGraph(adjMat, 20);
 
   // std::string line;
   // const char comma = ',';
@@ -83,7 +97,6 @@ int main() {
   // in2.close();
   // out2.close();
 
-  
   // Access/read from edge dataset
   // std::ifstream edge("dataset/cal.cedge.txt");
   // if (edge.is_open()) {
