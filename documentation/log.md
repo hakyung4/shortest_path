@@ -123,3 +123,34 @@ Although we were able to succesfully store the dataset and implemented BFS, we a
 - Move implementations to separate file such as Graph.h and Graph.cpp, and construct a class.
 
 - Implement Dijkstra’s Algorithm.
+
+## Week 4 (04/14 - 04/30)
+### What we accomplished
+
+- We succesfully implemented BFS.
+
+- We started moving implementations to seprate files such as BFS.cpp and BFS.h.
+
+### Contribution
+1. Ahmed(anahas2): 
+
+2. Peter (hakyung4):
+
+
+3. Kevin (sangwoo2):
+    - Implemented BFS.
+    - Moved functions to separate files. 
+
+4. Akhil (analla6): 
+    - Implemented BFS.
+    - Moved functions to separate files. 
+
+### Obstacles
+We still haven't been able to write test cases for BFS implementation. Two of our team members, Ahmed and Peter were not able to contribute this week due to midterms.
+
+### Plan for this week
+- Write test cases for BFS implementation.
+
+- Finish moving implementations to separate files such as Graph.h and Graph.cpp, and construct a class.
+
+- Implement Dijkstra’s Algorithm.
