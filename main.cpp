@@ -4,10 +4,13 @@
 #include <iomanip>
 #include <iostream>
 #include <list>
+#include <queue>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
+#include "BFS.cpp"
 #include "Graph.h"
 
 void addEdge(std::vector<int> adj[], std::string inputFile) {
@@ -41,29 +44,24 @@ void printGraph(std::vector<int> adj[], int V) {
   }
 }
 
-void BFS(std::vector<int> adj[], int s, int target, int V) {
+/*void BFS(std::vector<int> adj[], int s, int target, int V) {
   // Mark all the vertices as not visited
   bool *visited = new bool[V];
   for (int i = 0; i < V; i++)
     visited[i] = false;
-
   // Create a queue for BFS
   std::list<int> queue;
   int distance = 0;
-
   // Mark the current node as visited and enqueue it
   visited[s] = true;
   queue.push_back(s);
-
   // 'i' will be used to get all adjacent
   // vertices of a vertex
   std::list<int>::iterator i;
-
   while (!queue.empty()) {
     s = queue.front();
     queue.pop_front();
     distance++;
-
     // If we found our target destination, return distance
     if (s == target) {
       std::cout << std::endl;
@@ -83,6 +81,7 @@ void BFS(std::vector<int> adj[], int s, int target, int V) {
     }
   }
 }
+*/
 
 int main() {
   int line_count = 0;
@@ -102,7 +101,19 @@ int main() {
   int startNode = 102;
   int destinationNode = 565;
   // adj->BFS(adj, startNode, destinationNode, line_count);
-  BFS(adjMat, startNode, destinationNode, line_count);
+
+  // BFS(adjMat, startNode, destinationNode, line_count);
+
+  // printing to check BFS is working
+  Graph g(4);
+  g.BFS_addEdge(0, 1);
+  g.BFS_addEdge(0, 2);
+  g.BFS_addEdge(1, 2);
+  g.BFS_addEdge(2, 0);
+  g.BFS_addEdge(2, 3);
+
+  std::cout << "Following is Breadth First Traversal " << "(starting from vertex 2) " << std::endl;
+  g.BFS(2);
 
   return 0;
 }
