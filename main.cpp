@@ -13,36 +13,64 @@
 #include "BFS.cpp"
 #include "Graph.h"
 
-void addEdge(std::vector<int> adj[], std::string inputFile) {
+void addWeight(std::string inputFile) {
   std::ifstream File(inputFile);
-  std::string line;
-  while (std::getline(File, line)) {
-    int node1;
-    int node2;
-    int temp;
+  if (!File) {
+    std::cout << "can't open the file" << std::endl;
+  }
 
-    std::stringstream ss(line);
-    ss >> temp;
-    ss >> node1;
-    ss >> node2;
+  std::vector<int> edgeId;
+  std::vector<int> startNode;
+  std::vector<int> endNode;
+  std::vector<float> weight;
+  int n1, n2, n3;
+  float n4;
 
-    // add to matrix
-    adj[node1].push_back(node2);
-    adj[node2].push_back(node1);
+  while (File >> n1 >> n2 >> n3 >> n4) {
+    edgeId.push_back(n1);
+    startNode.push_back(n2);
+    endNode.push_back(n3);
+    weight.push_back(n4);
+  }
+  // std::cout << "Start, End, Distance : ";
+  for (int i = 0; i < startNode.size(); i++) {
+    std::cout << "Start, End, Distance : " << std::endl;
+    std::cout << startNode[i] << std::endl;
+    std::cout << endNode[i] << std::endl;
+    std::cout << weight[i] << std::endl;
   }
 }
+
+// void addEdge(std::vector<int> adj[], std::string inputFile) {
+//   std::ifstream File(inputFile);
+//   std::string line;
+//   while (std::getline(File, line)) {
+//     int node1;
+//     int node2;
+//     int temp;
+
+//     std::stringstream ss(line);
+//     ss >> temp;
+//     ss >> node1;
+//     ss >> node2;
+
+//     // add to matrix
+//     adj[node1].push_back(node2);
+//     adj[node2].push_back(node1);
+//   }
+// }
 
 // A utility function to print the adjacency list
 // representation of graph
-void printGraph(std::vector<int> adj[], int V) {
-  for (int v = 0; v < V; ++v) {
-    std::cout << "\nAdjacency list of vertex " << v
-              << "\nhead";
-    for (auto x : adj[v])
-      std::cout << " -> " << x;
-    printf("\n");
-  }
-}
+// void printGraph(std::vector<int> adj[], int V) {
+//   for (int v = 0; v < V; ++v) {
+//     std::cout << "\nAdjacency list of vertex " << v
+//               << "\nhead";
+//     for (auto x : adj[v])
+//       std::cout << " -> " << x;
+//     printf("\n");
+//   }
+// }
 
 /*void BFS(std::vector<int> adj[], int s, int target, int V) {
   // Mark all the vertices as not visited
@@ -84,36 +112,28 @@ void printGraph(std::vector<int> adj[], int V) {
 */
 
 int main() {
-  int line_count = 0;
-  std::ifstream File("dataset/cal.cedge.txt");
-  std::string line;
-  while (std::getline(File, line)) {
-    line_count++;
-  }
+  // get the total number of lines of cedge file
+  // int line_count = 0;
+  // std::ifstream File("dataset/cal.cedge.txt");
+  // std::string line;
+  // while (std::getline(File, line)) {
+  //   line_count++;
+  // }
 
   std::vector<int> adjMat[21693];  // error when I use line_count fsr
-  // Graph adj[21693];
-  addEdge(adjMat, "dataset/cal.cedge.txt");
-  // adj->addEdge(adj, "dataset/cal.cedge.txt");
-  // adj->printGraph(adj, 20);
-  // printGraph(adjMat, 20);
 
-  int startNode = 102;
-  int destinationNode = 565;
-  // adj->BFS(adj, startNode, destinationNode, line_count);
-
-  // BFS(adjMat, startNode, destinationNode, line_count);
+  addWeight("dataset/cal.cedge.txt");
 
   // printing to check BFS is working
-  Graph g(4);
-  g.BFS_addEdge(0, 1);
-  g.BFS_addEdge(0, 2);
-  g.BFS_addEdge(1, 2);
-  g.BFS_addEdge(2, 0);
-  g.BFS_addEdge(2, 3);
+  // Graph g(4);
+  // g.BFS_addEdge(0, 1);
+  // g.BFS_addEdge(0, 2);
+  // g.BFS_addEdge(1, 2);
+  // g.BFS_addEdge(2, 0);
+  // g.BFS_addEdge(2, 3);
 
-  std::cout << "Following is Breadth First Traversal " << "(starting from vertex 2) " << std::endl;
-  g.BFS(2);
+  // std::cout << "Following is Breadth First Traversal " << "(starting from vertex 2) " << std::endl;
+  // g.BFS(2);
 
   return 0;
 }
