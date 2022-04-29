@@ -9,8 +9,6 @@
 
 class Graph {
 public:
-  Graph(std::vector<int> start, std::vector<int> end, std::vector<float> wt);
-  ~Graph();
   void addEdge(std::vector<int> adj[], std::string inputFile);
   void printGraph(std::vector<int> adj[], int V);
   void BFS(std::vector<int> adj[], int s, int target, int V);

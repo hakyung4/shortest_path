@@ -124,7 +124,7 @@ Although we were able to succesfully store the dataset and implemented BFS, we a
 
 - Implement Dijkstra’s Algorithm.
 
-## Week 4 (04/14 - 04/30)
+## Week 4 (04/24 - 04/30)
 ### What we accomplished
 
 - We succesfully implemented BFS.

@@ -1,24 +1,21 @@
 #include "Graph.h"
 
-Graph::Graph(std::vector<int> start, std::vector<int> end, std::vector<float> wt) {
-  start = startNode_;
-  end = endNode_;
-  wt = weight_;
-}
-
-Graph::~Graph() {
-}
-
 void Graph::set_startNode(std::vector<int> startNode) {
-  startNode_ = startNode;
+  for (unsigned i = 0; i < startNode.size(); i++) {
+    startNode_.push_back(startNode[i]);
+  }
 }
 
 void Graph::set_endNode(std::vector<int> endNode) {
-  endNode_ = endNode;
+  for (unsigned i = 0; i < endNode.size(); i++) {
+    endNode_.push_back(endNode[i]);
+  }
 }
 
 void Graph::set_weight(std::vector<float> weight) {
-  weight_ = weight;
+  for (unsigned i = 0; i < weight.size(); i++) {
+    weight_.push_back(weight[i]);
+  }
 }
 
 std::vector<int> Graph::get_startNode() {
