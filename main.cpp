@@ -4,7 +4,7 @@ int main() {
   int line_count = 0;
   std::ifstream File("dataset/cal.cedge.txt");
   std::string line;
-  while (std::getline(File, line)) {
+  while(std::getline(File, line)) {
     line_count++;
   }
 
