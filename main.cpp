@@ -2,25 +2,27 @@
 
 int main() {
   int line_count = 0;
-  std::ifstream File("dataset/cal.cedge.txt");
+  std::ifstream File("dataset/data1.txt");
   std::string line;
   while(std::getline(File, line)) {
     line_count++;
   }
 
-  std::vector<int> adjMat[21693]; // error when I use line_count fsr
-  std::vector<std::vector<std::pair<int, int>>> adjDijkstra[21693]; // error when I use line_count fsr
-
-  
   Graph graph;
+  // graph.adjBFS[21693]; // error when I use line_count fsr
+  
 
-  graph.addEdge(adjMat, "dataset/cal.cedge.txt");
+  // BFS
+  int startNode = 7;
+  int destinationNode = 1;
+  graph.addEdge("dataset/data1.txt");
+  graph.printGraph(10); // printed only first ten lists
+  graph.BFS(startNode, destinationNode, line_count);
 
-  graph.printGraph(adjMat, 10); // printed only first ten lists
+  // Dijkstra's
+  graph.addEdgeDijkstra("dataset/data1.txt", line_count);
+  graph.printPairedGraph(line_count); // printed only first ten lists
 
-  int startNode = 5;
-  int destinationNode = 252;
-  graph.BFS(adjMat, startNode, destinationNode, line_count);
 
   return 0;
 }

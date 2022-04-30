@@ -1,7 +1,3 @@
-.objs/main.o: main.cpp Graph.h BFS.cpp BFS.h
+.objs/main.o: main.cpp Graph.h
 
 Graph.h:
-
-BFS.cpp:
-
-BFS.h:
