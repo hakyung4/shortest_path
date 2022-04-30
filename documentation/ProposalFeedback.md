@@ -1,6 +1,3 @@
-### Re-Grade
-100% - 10% = 90%
-
 ### Grade
 
 Not yet Competent (70%)
