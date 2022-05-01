@@ -55,7 +55,7 @@ void Graph::addWeight(std::string inputFile, std::vector<int> startNode, std::ve
   }
 }
 
-void Graph::addEdge(std::vector<int> adj[], std::string inputFile) {
+void Graph::addEdge(std::string inputFile) {
   std::ifstream File(inputFile);
   std::string line;
   while (std::getline(File, line)) {
@@ -69,19 +69,28 @@ void Graph::addEdge(std::vector<int> adj[], std::string inputFile) {
     ss >> node2;
 
     // add to matrix
-    adj[node1].push_back(node2);
-    adj[node2].push_back(node1);
+    adjBFS[node1].push_back(node2);
+    adjBFS[node2].push_back(node1);
   }
 }
 
-void Graph::addEdgeDijkstra(std::vector<int> adj[], std::string inputFile) {
+void Graph::addEdgeDijkstra (std::string inputFile, int V) {
     std::ifstream File(inputFile);
     std::string line;
+
+    for(int i = 0; i < V; i++)
+    {
+        // Create a vector to represent a row, and add it to the adjList.
+        std::vector< std::pair<int, float> > row;
+        adjDij.push_back(row);
+    }
+  
+
     while (std::getline(File, line)) {
         int temp;
         int node1;
         int node2;
-        int weight;
+        float weight;
 
         std::stringstream ss(line);
         ss >> temp;
@@ -89,28 +98,45 @@ void Graph::addEdgeDijkstra(std::vector<int> adj[], std::string inputFile) {
         ss >> node2;
         ss >> weight;
 
-        // add to matrix
-        std::pair<auto, auto> pair1(node2, weight);
-        std::pair<auto, auto> pair2(node1, weight);
 
-        adj[node1].push_back(pair1);
-        adj[node2].push_back(pair2);
+        adjDij[node1].push_back(std::make_pair(node2, weight));
+        adjDij[node2].push_back(std::make_pair(node1, weight));
     }
+
+
+
+}
+
+void Graph::printPairedGraph(int V) {
+    std::cout << "\n__________ Dijkstra's ____________\n" << std::endl;
+    
+    for (int v = 0; v < V; ++v) {
+      std::cout << "\nAdj Dijkstra's list of vertex " << v
+                << "\nhead";
+
+        for (auto x : adjDij[v]) {
+              std::cout << " -> " <<x.first ;
+        }
+      printf("\n");
+    }
+    printf("\n\n\n");
 }
 
 // A utility function to print the adjacency list
 // representation of graph
-void Graph::printGraph(std::vector<int> adj[], int V) {
+void Graph::printGraph(int V) {
+
   for (int v = 0; v < V; ++v) {
     std::cout << "\nAdjacency list of vertex " << v
               << "\nhead";
-    for (auto x : adj[v])
+    for (auto x : adjBFS[v]) {
       std::cout << " -> " << x;
+    }
     printf("\n");
   }
 }
 
-void Graph::BFS(std::vector<int> adj[], int s, int target, int V) {
+void Graph::BFS(int s, int target, int V) {
 
     // Path vector to store directions
     std::vector<int> path;
@@ -153,6 +179,8 @@ void Graph::BFS(std::vector<int> adj[], int s, int target, int V) {
       return;
     }
 
+
+    std::cout << "\n__________ BFS ____________\n" << std::endl;
     while(!queue.empty())
     {
         // Dequeue a vertex from queue and print it
@@ -164,7 +192,6 @@ void Graph::BFS(std::vector<int> adj[], int s, int target, int V) {
         if (s == target) {
           std::cout << std::endl;
           std::cout << "Target destination found!" << std::endl;
-          std::cout << "Distance = " << distance - 1 << std::endl;
           std::cout << "start = " << start << std::endl;
           std::cout << "curPointer s = " << s << std::endl;
           std::cout << "target = " << target << std::endl;
@@ -176,7 +203,7 @@ void Graph::BFS(std::vector<int> adj[], int s, int target, int V) {
         // vertex s. If a adjacent has not been visited,
         // then mark it visited and enqueue it
 
-        for (auto x : adj[s]) {
+        for (auto x : adjBFS[s]) {
 
             if (!visited[int(x)]) {
             visited[int(x)] = true;
@@ -206,6 +233,4 @@ void Graph::BFS(std::vector<int> adj[], int s, int target, int V) {
     }
 
     std::cout << "\n Length = " << distance << std::endl;
-    std::cout << "\n counter = " << counter << std::endl;
-
 }
