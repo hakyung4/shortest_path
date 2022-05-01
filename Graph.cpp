@@ -1,37 +1,11 @@
 #include "Graph.h"
 
-void Graph::set_startNode(std::vector<int> startNode) {
-  for (unsigned i = 0; i < startNode.size(); i++) {
-    startNode_.push_back(startNode[i]);
-  }
-}
-
-void Graph::set_endNode(std::vector<int> endNode) {
-  for (unsigned i = 0; i < endNode.size(); i++) {
-    endNode_.push_back(endNode[i]);
-  }
-}
-
-void Graph::set_weight(std::vector<float> weight) {
-  for (unsigned i = 0; i < weight.size(); i++) {
-    weight_.push_back(weight[i]);
-  }
-}
-
-std::vector<int> Graph::get_startNode() {
-  return startNode_;
-}
-
-std::vector<int> Graph::get_endNode() {
-  return endNode_;
-}
-
-std::vector<float> Graph::get_weight() {
-  return weight_;
-}
-
-void Graph::addWeight(std::string inputFile, std::vector<int> startNode, std::vector<int> endNode, std::vector<float> weight) {
+//void Graph::addWeight(std::string inputFile, std::vector<int> startNode, std::vector<int> endNode, std::vector<float> weight) {
+std::vector<float> Graph::addWeight(std::string inputFile) { 
   std::ifstream File(inputFile);
+  std::vector<int> startNode;
+  std::vector<int> endNode;
+  std::vector<float> weight;
   if (!File) {
     std::cout << "can't open the file" << std::endl;
   }
@@ -52,6 +26,7 @@ void Graph::addWeight(std::string inputFile, std::vector<int> startNode, std::ve
     std::cout << endNode[i] << std::endl;
     std::cout << weight[i] << std::endl;
   }
+  return weight;
 }
 
 void Graph::addEdge(std::string inputFile) {
@@ -73,10 +48,10 @@ void Graph::addEdge(std::string inputFile) {
   }
 }
 
-std::vector< std::vector<std::pair<int, float> > > addEdgeDijkstra(std::string inputFile, int V) {
+std::vector< std::vector<std::pair<int, float> > > Graph::addEdgeDijkstra(std::string inputFile, int V) {
   std::ifstream File(inputFile);
   std::string line;
-  std::vector< std::vector< std::pair<int, float> > > adjDij;
+
   for (int i = 0; i < V; i++) {
     // Create a vector to represent a row, and add it to the adjList.
     std::vector<std::pair<int, float> > row;
@@ -101,35 +76,43 @@ std::vector< std::vector<std::pair<int, float> > > addEdgeDijkstra(std::string i
   return adjDij;
 }
 
-std::vector<int> Dijkstra(std::vector<std::vector<std::pair<int, float> > > &adjDij, int &start) {
+std::vector<float> Graph::Dijkstra(std::string inputFile, std::vector<std::vector<std::pair<int, float> > > &adjList, int &start) {
   std::cout << "Shortest path: " << std::endl;
-  std::vector<int> distance;
-  int n = adjDij.size();
-  // Initialize all source->vertex as infinite.
-  for (int i = 0; i < n; i++) {
-    distance.push_back(1000000007);
+  int n = adjList.size();
+
+  // The way we are copying weight vector is not right. We are tryna add weights so that it's gonna look something like
+  // "from this node to that node, the weight is ______." But, the way we are copying it, it's doing like 
+  // "for this edge ID, the weight(distance) is ______." We aren't sure how to fix it.
+  std::vector<float> weight;
+  for (unsigned i = 0; i < addWeight(inputFile).size(); i++) {
+    weight.push_back(addWeight(inputFile)[i]);
   }
 
+  for (unsigned i = 0; i < weight.size(); i++) {
+    std::cout << "weight for node " << i << " is " << weight[i] << std::endl;
+  }
+  
+  
   std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int> >, std::greater<std::pair<int, int> > > pq;
   pq.push(std::make_pair(start, 0));
-  distance[start] = 0;
+  weight[start] = 0;
 
   while (pq.empty() == false) {
     int u = pq.top().first;
     pq.pop();
-    int n = adjDij[u].size();
+    int n = adjList[u].size();
 
     for (int i = 0; i < n; i++) {
-      int v = adjDij[u][i].first;
-      int weight = adjDij[u][i].second;
+      float v = adjList[u][i].first;
+      float wt = adjList[u][i].second;
 
-      if (distance[v] > distance[u] + weight) {
-        distance[v] = distance[u] + weight;
-        pq.push(std::make_pair(v, distance[v]));
+      if (weight[v] > weight[u] + wt) {
+        weight[v] = weight[u] + wt;
+        pq.push(std::make_pair(v, weight[v]));
       }
     }
   }
-  return distance;
+  return weight;
 }
 
 void Graph::printPairedGraph(int V) {
