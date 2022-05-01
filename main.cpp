@@ -20,9 +20,13 @@ int main() {
   graph.BFS(startNode, destinationNode, line_count);
 
   // Dijkstra's
-  graph.addEdgeDijkstra("dataset/data1.txt", line_count);
+  std::vector< std::vector< std::pair<int, float> > > adjDij = graph.addEdgeDijkstra("dataset/data1.txt", line_count);
   graph.printPairedGraph(line_count); // printed only first ten lists
-
+  int node = 0;
+  std::vector<int> dist = graph.Dijkstra(adjDij, node);
+  for (unsigned i = 0; i < dist.size(); i++) {
+    std::cout << "The distance from node " << node << "to node " << i << "is: " << dist[i] << std::endl;
+  }
 
   return 0;
 }
