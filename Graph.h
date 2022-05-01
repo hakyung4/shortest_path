@@ -16,7 +16,7 @@ public:
   void set_startNode(std::vector<int> startNode);
   void set_endNode(std::vector<int> endNode);
   void set_weight(std::vector<float> weight);
-  void addWeight(std::string inputFile, std::vector<int> startNode, std::vector<int> endNode, std::vector<float> weight);
+  std::vector<float> addWeight(std::string inputFile);
   std::vector<int> get_startNode();
   std::vector<int> get_endNode();
   std::vector<float> get_weight();
@@ -30,7 +30,7 @@ public:
   // void addEdgeDijkstra (std::string inputFile, int V);
   std::vector< std::vector<std::pair<int, float> > > addEdgeDijkstra(std::string inputFile, int V);
   // std::vector<int> Dijkstra(int s, int target, int V);
-  std::vector<int> Dijkstra(std::vector<std::vector<std::pair<int, float> > > &adjDij, int &start);
+  std::vector<float> Dijkstra(std::string inputFile, std::vector<std::vector<std::pair<int, float> > > &adjList, int &start);
   // void Dijkstra(int s, int target, int V);
   void printPairedGraph(int V);
 
@@ -39,7 +39,7 @@ public:
 
 
 private:
-  int vertex_;
+  // int vertex_;
   std::vector<int> startNode_;
   std::vector<int> endNode_;
   std::vector<float> weight_;
