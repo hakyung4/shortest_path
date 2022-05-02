@@ -127,26 +127,34 @@ Although we were able to succesfully store the dataset and implemented BFS, we a
 ## Week 5 (04/24 - 04/30)
 ### What we accomplished
 
-✓ Create smaller graph for testing, add data correction step (start small, test, build up)
-✓ Finalize BFS to consider all routes, store and decide on smallest path (80%) [Kevin, Ahmed]
-✓ Create a class
-✓ Clean directory (create better structure)
-- Python Map
-- Test cases [Kevin, Ahmed]
-- Djikastra's algorithm [Akhil, Peter]
+We moved our functions to a separate file and created a graph class, which contains those functions. Kevin and Ahmed were able to finalize BFS implementation with smaller dataset that verifies the implementation. Kevin also created a map of the road network, using Python. Peter and Akhil implemented Dijkastra's algorithm, and Kevin and Ahmed helped debug the implementation.
 
 ### Contribution
 1. Ahmed(anahas2): 
+    - Modified BFS implementation with smaller test dataset.
+    - Helped debug the implementation of Dijkastra's algorithm.
 
 2. Peter (hakyung4):
+    - Created a class and separate files.
+    - Implemented Dijkastra's algorithm.
 
 3. Kevin (sangwoo2):
+    - Modified BFS implementation with smaller test dataset.
+    - Helped debug the implementation of Dijkastra's algorithm.
 
 4. Akhil (analla6): 
+    - Created a class and separate files.
+    - Implemented Dijkastra's algorithm.
  
 
 ### Obstacles
-..
+We worked in a sub group, each group focusing on different area. While it helped us to separate tasks, it also delayed our progress a little bit because we were able to figure out small mistakes when we worked on it altogether.
 
 ### Plan for this week
-..
+- Write test cases.
+
+- Print out path for Dijkastra's algorithm.
+
+- Finish force directed graph.
+
+- Finish presentation.
