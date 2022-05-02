@@ -1,15 +1,12 @@
-#pragma once
-
 #include <algorithm>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <list>
+#include <queue>
 #include <sstream>
 #include <string>
 #include <vector>
-#include <queue>
-
 
 class Graph {
 public:
@@ -27,20 +24,19 @@ public:
   void printGraph(int V);
 
   // Dijkstra
-  // void addEdgeDijkstra (std::string inputFile, int V);
-  std::vector< std::vector<std::pair<int, float> > > addEdgeDijkstra(std::string inputFile, int V);
-  // std::vector<int> Dijkstra(int s, int target, int V);
-  std::vector<float> Dijkstra(std::string inputFile, std::vector<std::vector<std::pair<int, float> > > &adjList, int &start);
-  // void Dijkstra(int s, int target, int V);
+  std::vector<std::vector<std::pair<int, float> > > addEdgeDijkstra(std::string inputFile, int V);
+  std::vector<float> Dijkstra(std::string inputFile, int &start, int &end);
   void printPairedGraph(int V);
 
   std::vector<int> adjBFS[21693];
-  std::vector< std::vector< std::pair<int, float> > > adjDij;
-
+  std::vector<std::vector<std::pair<int, float> > > adjDij;
 
 private:
   // int vertex_;
-  std::vector<int> startNode_;
-  std::vector<int> endNode_;
-  std::vector<float> weight_;
+  std::vector<int> startNode;
+  std::vector<int> endNode;
+  std::vector<float> weight;
+  // std::vector<int> startNode_;
+  // std::vector<int> endNode_;
+  // std::vector<float> weight_;
 };

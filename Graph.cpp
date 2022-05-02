@@ -1,11 +1,8 @@
 #include "Graph.h"
 
-//void Graph::addWeight(std::string inputFile, std::vector<int> startNode, std::vector<int> endNode, std::vector<float> weight) {
-std::vector<float> Graph::addWeight(std::string inputFile) { 
+std::vector<float> Graph::addWeight(std::string inputFile) {
   std::ifstream File(inputFile);
-  std::vector<int> startNode;
-  std::vector<int> endNode;
-  std::vector<float> weight;
+
   if (!File) {
     std::cout << "can't open the file" << std::endl;
   }
@@ -48,7 +45,7 @@ void Graph::addEdge(std::string inputFile) {
   }
 }
 
-std::vector< std::vector<std::pair<int, float> > > Graph::addEdgeDijkstra(std::string inputFile, int V) {
+std::vector<std::vector<std::pair<int, float> > > Graph::addEdgeDijkstra(std::string inputFile, int V) {
   std::ifstream File(inputFile);
   std::string line;
 
@@ -76,43 +73,48 @@ std::vector< std::vector<std::pair<int, float> > > Graph::addEdgeDijkstra(std::s
   return adjDij;
 }
 
-std::vector<float> Graph::Dijkstra(std::string inputFile, std::vector<std::vector<std::pair<int, float> > > &adjList, int &start) {
+std::vector<float> Graph::Dijkstra(std::string inputFile, int &start, int &end) {
   std::cout << "Shortest path: " << std::endl;
-  int n = adjList.size();
+  int n = adjDij.size();
+  std::vector<float> dist;
+  std::vector<int> path;
+  int nodeCounter = 0;
 
-  // The way we are copying weight vector is not right. We are tryna add weights so that it's gonna look something like
-  // "from this node to that node, the weight is ______." But, the way we are copying it, it's doing like 
-  // "for this edge ID, the weight(distance) is ______." We aren't sure how to fix it.
-  std::vector<float> weight;
-  for (unsigned i = 0; i < addWeight(inputFile).size(); i++) {
-    weight.push_back(addWeight(inputFile)[i]);
+  for (int i = 0; i < n; i++) {
+    dist.push_back(1000000007);
   }
 
-  for (unsigned i = 0; i < weight.size(); i++) {
-    std::cout << "weight for node " << i << " is " << weight[i] << std::endl;
-  }
-  
-  
   std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int> >, std::greater<std::pair<int, int> > > pq;
+  // push start to pq
   pq.push(std::make_pair(start, 0));
-  weight[start] = 0;
+  path.push_back(start);
+
+  dist[start] = 0;
 
   while (pq.empty() == false) {
+    // push top to pq
     int u = pq.top().first;
     pq.pop();
-    int n = adjList[u].size();
+
+    int n = adjDij[u].size();
 
     for (int i = 0; i < n; i++) {
-      float v = adjList[u][i].first;
-      float wt = adjList[u][i].second;
+      float v = adjDij[u][i].first;
+      float wt = adjDij[u][i].second;
 
-      if (weight[v] > weight[u] + wt) {
-        weight[v] = weight[u] + wt;
-        pq.push(std::make_pair(v, weight[v]));
+      if (dist[v] > dist[u] + wt) {
+        dist[v] = dist[u] + wt;
+        pq.push(std::make_pair(v, dist[v]));
+      }
+
+
+      if (v == end) {
+        std::cout << "The distance from node " << start << " to node " << v << " is: " << dist[v] << std::endl;
+        return dist;
       }
     }
   }
-  return weight;
+  return dist;
 }
 
 void Graph::printPairedGraph(int V) {
