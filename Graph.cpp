@@ -79,31 +79,39 @@ std::vector<float> Graph::Dijkstra(std::string inputFile, int &start, int &end) 
   std::vector<float> dist;
   std::vector<int> path;
   int nodeCounter = 0;
-
+  
+  // Initialize all source->vertex as infinite.
   for (int i = 0; i < n; i++) {
+    // Define "infinity" as necessary by constraints.
     dist.push_back(1000000007);
   }
 
+  // Create a priority queue.
   std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int> >, std::greater<std::pair<int, int> > > pq;
-  // push start to pq
+
+  // Add source to pq, where distance is 0.
   pq.push(std::make_pair(start, 0));
   path.push_back(start);
 
   dist[start] = 0;
 
   while (pq.empty() == false) {
-    // push top to pq
+    // Get min distance vertex from pq. (Call it u.)
     int u = pq.top().first;
     pq.pop();
 
     int n = adjDij[u].size();
 
+    // Visit all of u's friends. For each one (called v)
     for (int i = 0; i < n; i++) {
       float v = adjDij[u][i].first;
       float wt = adjDij[u][i].second;
-
+      
+      // If the distance to v is shorter by going through u
       if (dist[v] > dist[u] + wt) {
+        // Update the distance of v.
         dist[v] = dist[u] + wt;
+        // Insert v into the pq. 
         pq.push(std::make_pair(v, dist[v]));
       }
 
