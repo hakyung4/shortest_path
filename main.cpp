@@ -12,18 +12,27 @@ int main() {
   // graph.adjBFS[21693]; // error when I use line_count fsr
 
   // BFS
-  int startNode = 7;
-  int destinationNode = 1;
+  int startnode;
+  int endnode;
+
+  std::cout << "Start Node for BFS: ";
+  std::cin >> startnode;
+  std::cout << "End Node for BFS: ";
+  std::cin >> endnode;
   graph.addEdge("dataset/data3.txt");
   graph.printGraph(10);  // printed only first ten lists
-  graph.BFS(startNode, destinationNode, line_count);
-
+  graph.BFS(startnode, endnode, line_count);
+  
+  
+  
   // Dijkstra's
+  std::cout << "Start Node for Dijkstra: ";
+  std::cin >> startnode;
+  std::cout << "End Node for Dijkstra: ";
+  std::cin >> endnode;
   std::vector<std::vector<std::pair<int, float> > > adjlis = graph.addEdgeDijkstra("dataset/data3.txt", line_count);
   graph.printPairedGraph(line_count);  // printed only first ten lists
-  int node = 9;
-  int node2 = 1;
-  std::vector<float> dist = graph.Dijkstra("dataset/data3.txt", node, node2);
+  std::vector<float> dist = graph.Dijkstra("dataset/data3.txt", startnode, endnode);
 
   return 0;
 }
