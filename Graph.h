@@ -7,9 +7,11 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <stack>
 
 class Graph {
 public:
+  Graph() = default;
   void set_startNode(std::vector<int> startNode);
   void set_endNode(std::vector<int> endNode);
   void set_weight(std::vector<float> weight);
