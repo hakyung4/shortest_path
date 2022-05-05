@@ -20,7 +20,6 @@ clang++ .objs/Graph.o .objs/test1.o cs225/catch/catchmain.o  -std=c++14 -stdlib=
 
 */
 
-// part1
 TEST_CASE("test_addEdge", "[weight=10]") {
   Graph graph;
   string filename = "dataset/data1.txt";
@@ -40,24 +39,20 @@ TEST_CASE("BFS", "[weight=10]") {
   }
   int startNode = 1;
   int endNode = 6;
-
   graph.BFS(startNode, endNode, line_count);
-
-  REQUIRE(graph.BFS(startNode, endNode, line_count) == 2);
+  REQUIRE(graph.BFS(startNode, endNode, line_count) == 0);
 }
 
-// TEST_CASE("Dijkstra", "[weight=10]") {
-//   Graph graph;
-//   string filename = "dataset/data1.txt";
-//   int startNode = 1;
-//   int endNode = 6;
+TEST_CASE("Dijkstra", "[weight=10]") {
+  Graph graph;
+  string filename = "dataset/data1.txt";
+  int startNode = 1;
+  int endNode = 6;
 
-//   graph.Dijkstra(filename, startNode, endNode);
-    // No conversion from std::vector<float> to double...
-//   std::vector<float> dist = 0.007977;
+  graph.Dijkstra(filename, startNode, endNode);
 
-//   REQUIRE(graph.Dijkstra(filename, startNode, endNode) == dist);
-// }
+  REQUIRE(graph.Dijkstra(filename, startNode, endNode) == 0.007977);
+}
 
 // TEST_CASE("addEdgeDijkstra", "[weight=10]") {
 //   Graph graph;
@@ -68,8 +63,8 @@ TEST_CASE("BFS", "[weight=10]") {
 //   while (getline(File, line)) {
 //     line_count++;
 //   }
-    // invalid operands to binary expression ('std::vector<std::vector<std::pair<int, float>>>' and 'int')
+
 //   graph.addEdgeDijkstra(filename, line_count);
     
-//   REQUIRE(graph.addEdgeDijkstra(filename, line_count) == 1);
+//   REQUIRE(graph.adjDij[0][0] == 1);
 // }

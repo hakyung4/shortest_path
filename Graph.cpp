@@ -200,7 +200,7 @@ int Graph::BFS(int s, int target, int V) {
   return distance;
 }
 
-std::vector<float> Graph::Dijkstra(std::string inputFile, int &start, int &end) {
+double Graph::Dijkstra(std::string inputFile, int &start, int &end) {
   int n = adjDij.size();
   std::vector<float> dist;
   int nodeCounter = 0;
@@ -275,5 +275,5 @@ std::vector<float> Graph::Dijkstra(std::string inputFile, int &start, int &end) 
     std::cout << " -> " << x;
   }
 
-  return dist;
+  return dist[end];
 }
