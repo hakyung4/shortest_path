@@ -77,6 +77,8 @@
     "concepts": "cpp",
     "variant": "cpp",
     "list": "cpp",
-    "queue": "cpp"
+    "queue": "cpp",
+    "future": "cpp",
+    "thread": "cpp"
   }
 }

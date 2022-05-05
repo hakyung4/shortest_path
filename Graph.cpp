@@ -1,8 +1,7 @@
 #include "Graph.h"
 
-std::vector<float> Graph::addWeight(std::string inputFile) {
+void Graph::addWeight(std::string inputFile, std::vector<int> startNode, std::vector<int> endNode, std::vector<float> weight) {
   std::ifstream File(inputFile);
-
   if (!File) {
     std::cout << "can't open the file" << std::endl;
   }
@@ -23,10 +22,9 @@ std::vector<float> Graph::addWeight(std::string inputFile) {
     std::cout << endNode[i] << std::endl;
     std::cout << weight[i] << std::endl;
   }
-  return weight;
 }
 
-void Graph::addEdge(std::string inputFile) {
+void Graph::addEdgeBFS(std::string inputFile) {
   std::ifstream File(inputFile);
   std::string line;
   while (std::getline(File, line)) {
@@ -73,58 +71,6 @@ std::vector<std::vector<std::pair<int, float> > > Graph::addEdgeDijkstra(std::st
   return adjDij;
 }
 
-std::vector<float> Graph::Dijkstra(std::string inputFile, int &start, int &end) {
-  std::cout << "Shortest path: " << std::endl;
-  int n = adjDij.size();
-  std::vector<float> dist;
-  std::vector<int> path;
-  int nodeCounter = 0;
-  
-  // Initialize all source->vertex as infinite.
-  for (int i = 0; i < n; i++) {
-    // Define "infinity" as necessary by constraints.
-    dist.push_back(1000000007);
-  }
-
-  // Create a priority queue.
-  std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int> >, std::greater<std::pair<int, int> > > pq;
-
-  // Add source to pq, where distance is 0.
-  pq.push(std::make_pair(start, 0));
-  path.push_back(start);
-
-  dist[start] = 0;
-
-  while (pq.empty() == false) {
-    // Get min distance vertex from pq. (Call it u.)
-    int u = pq.top().first;
-    pq.pop();
-
-    int n = adjDij[u].size();
-
-    // Visit all of u's friends. For each one (called v)
-    for (int i = 0; i < n; i++) {
-      float v = adjDij[u][i].first;
-      float wt = adjDij[u][i].second;
-      
-      // If the distance to v is shorter by going through u
-      if (dist[v] > dist[u] + wt) {
-        // Update the distance of v.
-        dist[v] = dist[u] + wt;
-        // Insert v into the pq. 
-        pq.push(std::make_pair(v, dist[v]));
-      }
-
-
-      if (v == end) {
-        std::cout << "The distance from node " << start << " to node " << v << " is: " << dist[v] << std::endl;
-        return dist;
-      }
-    }
-  }
-  return dist;
-}
-
 void Graph::printPairedGraph(int V) {
   std::cout << "\n__________ Dijkstra's ____________\n"
             << std::endl;
@@ -154,7 +100,7 @@ void Graph::printGraph(int V) {
   }
 }
 
-void Graph::BFS(int s, int target, int V) {
+int Graph::BFS(int s, int target, int V) {
   // Path vector to store directions
   std::vector<int> path;
 
@@ -175,9 +121,6 @@ void Graph::BFS(int s, int target, int V) {
   std::vector<bool> visited;
   visited.resize(V, false);
 
-  // Use a stack to store directions, to be dumped into the path vector later
-  std::stack<int> directions;
-
   // 'i' will be used to get all adjacent
   // vertices of a vertex
   std::list<int>::iterator i;
@@ -193,10 +136,9 @@ void Graph::BFS(int s, int target, int V) {
 
   if (start == target) {
     shortestLength = 0;
-    return;
   }
 
-  std::cout << "__________ BFS ____________" << std::endl;
+  // std::cout << "\n__________ BFS ____________\n" << std::endl;
   while (!queue.empty()) {
     // Dequeue a vertex from queue and print it
     s = queue.front();
@@ -204,11 +146,11 @@ void Graph::BFS(int s, int target, int V) {
 
     // If we found our target destination, return distance
     if (s == target) {
-      std::cout << std::endl;
-      std::cout << "Target destination found!" << std::endl;
-      std::cout << "start = " << start << std::endl;
-      std::cout << "curPointer s = " << s << std::endl;
-      std::cout << "target = " << target << std::endl;
+      // std::cout << std::endl;
+      // std::cout << "Target destination found!" << std::endl;
+      // std::cout << "start = " << start << std::endl;
+      // std::cout << "curPointer s = " << s << std::endl;
+      // std::cout << "target = " << target << std::endl;
       endFlag = true;
     }
 
@@ -225,7 +167,7 @@ void Graph::BFS(int s, int target, int V) {
         lengths[int(x)] = lengths[int(s)] + 1;
         prevCells[int(x)] = s;
 
-        std::cout << "length at node " << x << " = " << lengths[int(x)] << std::endl;
+        // std::cout << "length at node " << x << " = "<< lengths[int(x)] << std::endl;
       }
     }
   }
@@ -239,10 +181,99 @@ void Graph::BFS(int s, int target, int V) {
     path.push_back(cur);
   }
 
-  std::cout << "\n Shortest Path backtrack: \n " << target;
+  std::cout << "\nBFS - Shortest Path backtrack: \n " << target;
+
+  std::ofstream pathFile;
+  pathFile.open("BFSpath.csv");
+  pathFile << "BFS - Shortest Path backtrack:"
+           << "\n";
+  pathFile << target << "\n";
+  for (auto x : path) {
+    std::cout << " -> " << x;
+
+    pathFile << x << "\n";
+  }
+
+  pathFile.close();
+  std::cout << "\nNumber of nodes = " << distance << std::endl;
+
+  return distance;
+}
+
+std::vector<float> Graph::Dijkstra(std::string inputFile, int &start, int &end) {
+  int n = adjDij.size();
+  std::vector<float> dist;
+  int nodeCounter = 0;
+
+  // Path vector to store directions
+  std::vector<int> path;
+
+  // Store prev cells in a vector, resize, set all to -1
+  std::vector<int> prevCells;
+  prevCells.resize(n, -1);
+
+  // Initialize all source->vertex as infinite.
+  for (int i = 0; i < n; i++) {
+    // Define "infinity" as necessary by constraints.
+    dist.push_back(1000000007);
+  }
+
+  // Create a priority queue.
+  std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int> >, std::greater<std::pair<int, int> > > pq;
+
+  // Add source to pq, where distance is 0.
+  pq.push(std::make_pair(start, 0));
+  // path.push_back(start);
+
+  dist[start] = 0;
+  bool flagDone = false;
+
+  while (pq.empty() == false) {
+    if (flagDone) {
+      break;
+    }
+    // Get min distance vertex from pq. (Call it u.)
+    int u = pq.top().first;
+    pq.pop();
+
+    int n = adjDij[u].size();
+
+    // Visit all of u's friends. For each one (called v)
+    for (int i = 0; i < n; i++) {
+      if (flagDone) {
+        break;
+      }
+      float v = adjDij[u][i].first;
+      float wt = adjDij[u][i].second;
+
+      // If the distance to v is shorter by going through u
+      if (dist[v] > dist[u] + wt) {
+        // Update the distance of v.
+        dist[v] = dist[u] + wt;
+        // Insert v into the pq.
+        pq.push(std::make_pair(v, dist[v]));
+        prevCells[v] = u;
+      }
+
+      if (v == end) {
+        std::cout << "The distance from node " << start << " to node " << v << " is = " << dist[v] << std::endl;
+        flagDone = true;
+      }
+    }
+  }
+
+  int prev = prevCells[end];
+  int cur = end;
+  while (prev != -1) {
+    cur = prev;
+    prev = prevCells[cur];
+    path.push_back(cur);
+  }
+
+  std::cout << "\nDijkstra - Shortest Path Backtrack: \n " << end;
   for (auto x : path) {
     std::cout << " -> " << x;
   }
 
-  std::cout << "\n Length = " << distance << std::endl;
+  return dist;
 }
