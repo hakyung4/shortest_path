@@ -1,5 +1,5 @@
-EXE = final
-TEST = test
+EXE = final 
+# TEST = test
 
 EXE_OBJ = main.o Graph.o
 OBJS = main.o Graph.o
