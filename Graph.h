@@ -28,7 +28,7 @@ public:
 
   // Dijkstra
   std::vector<std::vector<std::pair<int, float> > > addEdgeDijkstra(std::string inputFile, int V);
-  std::vector<float> Dijkstra(std::string inputFile, int &start, int &end);
+  double Dijkstra(std::string inputFile, int &start, int &end);
   void printPairedGraph(int V);
 
   std::vector<int> adjBFS[21693];
