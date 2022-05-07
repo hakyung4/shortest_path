@@ -11,9 +11,9 @@ Dijkstra's algorithm makes use of the assigned weights(the distances in the csv 
 For the force directed graph, we imported the open sourced d3fdgraph module and then created a table of 3 columns(start node, end node, weight of edge that connects the two nodes). The weights were multiplied by a 1000 to ensure that the graphs didn't have 0 weights. The data was then fed into plot_force_directed_graph function in the module. The thickness of each edge corresponds to the magnitude of the edge's weight. Thicker edges correspond to larger weights. Due to the limited processing capacity of our computers, only 100 nodes were implemented and visualized.
 
 ![force directed graph of 100 nodes](https://media.github-dev.cs.illinois.edu/user/11220/files/439b515e-4803-4ab1-9b87-833187b35d42)
-
+![DIJ_result](https://media.github-dev.cs.illinois.edu/user/11220/files/5066ef27-2238-4db5-b2f8-e8e25079933b)
 
 The main question of this project was: given a dataset of a speciﬁc area’s road network and assuming ideal conditions (no traﬃc, obstacles, limitations, and uniform speed all throughout), what would be the best algorithm (from among breadth-ﬁrst search and Dijkstra’s algorithm) to deduce the fastest route between two points (road intersection) on a map? After setting up the BFS and Dijkstra's algorithm, we made use of the std::chrono library to test the runtimes of each of the functions. Overall, we found that the Dijkstra's algorithm was able to find the path faster than the BFS algorithm.
 
-![DIJ_result](https://media.github-dev.cs.illinois.edu/user/11220/files/5066ef27-2238-4db5-b2f8-e8e25079933b)
+
 
