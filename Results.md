@@ -8,7 +8,7 @@ Dijkstra's algorithm makes use of the assigned weights(the distances in the csv 
 
 <img width="1189" alt="Screen Shot 2022-05-06 at 21 03 51" src="https://media.github-dev.cs.illinois.edu/user/11450/files/e05d40e1-7a80-4de8-bdc6-12f214f8398c">
 
-For the force directed graph, we imported the open sourced d3fdgraph module and then created a table of 3 columns(start node, end node, weight of edge that connects the two nodes). The weights were multiplied by a 1000 to ensure that the graphs didn't have 0 weights. The data was then fed into plot_force_directed_graph function in the module. Due to the limited processing capacity of our computers, only 100 nodes were implemented and visualized.
+For the force directed graph, we imported the open sourced d3fdgraph module and then created a table of 3 columns(start node, end node, weight of edge that connects the two nodes). The weights were multiplied by a 1000 to ensure that the graphs didn't have 0 weights. The data was then fed into plot_force_directed_graph function in the module. The thickness of each edge corresponds to the magnitude of the edge's weight. Thicker edges correspond to larger weights. Due to the limited processing capacity of our computers, only 100 nodes were implemented and visualized.
 
 ![force directed graph of 100 nodes](https://media.github-dev.cs.illinois.edu/user/11220/files/439b515e-4803-4ab1-9b87-833187b35d42)
 
