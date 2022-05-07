@@ -12,4 +12,4 @@ For the force directed graph, we imported the open sourced d3fdgraph module and 
 
 //attach test case visualization here
 
-The main question of this project was
+The main question of this project was: given a dataset of a speciﬁc area’s road network and assumingideal conditions (no traﬃc, obstacles, limitations, and uniform speed all throughout), what would be the bestalgorithm (from among breadth-ﬁrst search and Dijkstra’s algorithm) to deduce the fastest route between twopoints (road intersection) on a map?
