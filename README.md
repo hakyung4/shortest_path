@@ -30,9 +30,6 @@ To compile:
 make
 ```
 
-### Final Presentation Video
-https://youtu.be/EbAMA-AcTgk
-
 To run the executable: 
 ```
 ./final
@@ -55,3 +52,9 @@ When compiling and running the execultable `main` file, it will ask you to put d
 
 ### Example Result
 <img width="1189" alt="Screen Shot 2022-05-06 at 18 32 28" src="https://media.github-dev.cs.illinois.edu/user/11450/files/0f061807-4250-4485-b034-d15e2cbc1c8b">
+
+
+
+### Final Presentation Video
+
+https://youtu.be/EbAMA-AcTgk
