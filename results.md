@@ -19,3 +19,8 @@ The runtimes used in the final project are as follows. The runtime of data stora
 The main question of this project was: given a dataset of a speciﬁc area’s road network and assuming ideal conditions (no traﬃc, obstacles, limitations, and uniform speed all throughout), what would be the best algorithm (from among breadth-ﬁrst search and Dijkstra’s algorithm) to deduce the fastest route between two points (road intersection) on a map? After setting up the BFS and Dijkstra's algorithm, we made use of the std::chrono library to test the runtimes of each of the functions. Overall, we found that the Dijkstra's algorithm was able to find the path faster than the BFS algorithm, both in terms of taking edge weights (distances) into account, thus deducing a shorter path than that provided by BFS, but also providing the result in a more efficient and faster runtime.
 <img width="1092" alt="Screen Shot 2022-05-06 at 9 16 35 PM" src="https://media.github-dev.cs.illinois.edu/user/10043/files/fe4a0e2c-3618-498e-8096-7a8ab0ee4655">
 
+
+
+### Final Presentation Video
+https://youtu.be/EbAMA-AcTgk
+
