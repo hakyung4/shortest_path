@@ -1,29 +1,5 @@
 #include "Graph.h"
 
-void Graph::addWeight(std::string inputFile, std::vector<int> startNode, std::vector<int> endNode, std::vector<float> weight) {
-  std::ifstream File(inputFile);
-  if (!File) {
-    std::cout << "can't open the file" << std::endl;
-  }
-  std::vector<int> edgeId;
-  int n1, n2, n3;
-  float n4;
-
-  while (File >> n1 >> n2 >> n3 >> n4) {
-    edgeId.push_back(n1);
-    startNode.push_back(n2);
-    endNode.push_back(n3);
-    weight.push_back(n4);
-  }
-
-  for (int i = 0; i < int(startNode.size()); i++) {
-    std::cout << "Start, End, Distance : " << std::endl;
-    std::cout << startNode[i] << std::endl;
-    std::cout << endNode[i] << std::endl;
-    std::cout << weight[i] << std::endl;
-  }
-}
-
 void Graph::addEdgeBFS(std::string inputFile) {
   std::ifstream File(inputFile);
   std::string line;
@@ -76,11 +52,12 @@ void Graph::printPairedGraph(int V) {
             << std::endl;
 
   for (int v = 0; v < V; ++v) {
-    std::cout << "\nAdj Dijkstra's list of vertex " << v
-              << "\nhead";
+    // std::cout << "\nAdj Dijkstra's list of vertex " << v
+    //           << "\nhead";
 
     for (auto x : adjDij[v]) {
-      std::cout << " -> " << x.first;
+      std::cout << " -> "
+                << "(" << x.first << ", " << x.second << ")";
     }
     printf("\n");
   }
@@ -177,6 +154,7 @@ int Graph::BFS(int s, int target, int V) {
   while (prev != -1) {
     distance++;
     cur = prev;
+
     prev = prevCells[cur];
     path.push_back(cur);
   }
@@ -196,11 +174,10 @@ int Graph::BFS(int s, int target, int V) {
 
   pathFile.close();
   std::cout << "\nNumber of nodes = " << distance << std::endl;
-
   return distance;
 }
 
-double Graph::Dijkstra(std::string inputFile, int &start, int &end) {
+float Graph::Dijkstra(std::string inputFile, int &start, int &end) {
   int n = adjDij.size();
   std::vector<float> dist;
   int nodeCounter = 0;
@@ -261,6 +238,7 @@ double Graph::Dijkstra(std::string inputFile, int &start, int &end) {
       }
     }
   }
+  float distance = dist[end];
 
   int prev = prevCells[end];
   int cur = end;
@@ -275,5 +253,5 @@ double Graph::Dijkstra(std::string inputFile, int &start, int &end) {
     std::cout << " -> " << x;
   }
 
-  return dist[end];
+  return distance;
 }
