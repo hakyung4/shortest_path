@@ -248,10 +248,16 @@ float Graph::Dijkstra(std::string inputFile, int &start, int &end) {
     path.push_back(cur);
   }
 
-  std::cout << "\nDijkstra - Shortest Path Backtrack: \n " << end;
+  std::ofstream pathFile;
+  pathFile.open("DIJpath.csv");
+  pathFile << "Dijstra - Shortest Path backtrack:"
+           << "\n";
   for (auto x : path) {
     std::cout << " -> " << x;
+    pathFile << x << "\n";
   }
+
+  pathFile.close();
 
   return distance;
 }
